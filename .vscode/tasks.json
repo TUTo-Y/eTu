@@ -1,0 +1,55 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "ubuntu gcc编译",
+			"command": "/usr/bin/gcc-11",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"*.c",
+				"-lssl",
+				"-lcrypto",
+				"-o",
+				"${fileDirname}/bin/test"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "编译器: /usr/bin/gcc-11"
+		},
+		{
+			"type": "cppbuild",
+			"label": "windows vc编译",
+			"command": "cl.exe",
+			"args": [
+				"/Zi",
+				"/nologo",
+				"/Fe:",
+				"${fileDirname}\\bin\\test.exe",
+				"*.c",
+				"/I",
+				"include",
+				"/link",
+				"lib/libcrypto.lib",
+				"lib/libssl.lib"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "编译器: cl.exe"
+		}
+	]
+}
